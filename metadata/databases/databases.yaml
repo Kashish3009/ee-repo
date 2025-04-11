@@ -1,1 +1,25 @@
-[]
+- name: OracleDB
+  kind: oracle
+  configuration:
+    template: null
+    timeout: null
+    value:
+      fully_qualify_all_names: false
+      jdbc_url: jdbc:oracle:thin:@//143.198.2.62:1521/FREEPDB1?user=chinook&password=d7P3uWuBxvo88puyu2NT
+  tables: "!include OracleDB/tables/tables.yaml"
+- name: postgresD
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://postgres:postgrespassword@postgres:5432/postgres
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include postgresD/tables/tables.yaml"
+- name: remotePostgres
+  kind: postgres
+  configuration:
+    connection_info:
+      database_url: postgres://neondb_owner:2Sm6rdugiWoU@old-boat-23819723.us-west-2.aws.neon.tech/github-intg_db_4326837?options=project%3Dold-boat-23819723&sslmode=require
+      isolation_level: read-committed
+      use_prepared_statements: false
+  tables: "!include remotePostgres/tables/tables.yaml"
